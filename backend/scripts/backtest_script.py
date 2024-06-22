@@ -1,3 +1,4 @@
+
 import backtrader as bt
 import yfinance as yf
 from datetime import datetime
@@ -53,8 +54,16 @@ def get_user_input():
 def run_backtest(initial_cash, start_date, end_date):
     """
     Run the backtest with the given parameters.
-    """
+    
+    # :param initial_cash: A string or float representing the initial cash amount
+    # :param start_date: A string in the format 'YYYY-MM-DD'
+    # :param end_date: A string in the format 'YYYY-MM-DD'
+    # :return: A tuple containing the results string and the figure object
+    # """
     try:
+        # Convert initial_cash to float if it's a string
+        initial_cash = float(initial_cash)
+
         # Initialize Cerebro engine
         cerebro = bt.Cerebro()
         cerebro.addstrategy(SMA)
@@ -79,22 +88,31 @@ def run_backtest(initial_cash, start_date, end_date):
         results = cerebro.run()
         strat = results[0]
         
-        # Extract and print results
+        # Extract results
         drawdown = strat.analyzers.drawdown.get_analysis()['max']['drawdown']
         trade_analyzer = strat.analyzers.tradeanalyzer.get_analysis()
         
-        print(f"Return: {(cerebro.broker.getvalue() / initial_cash - 1) * 100:.2f}%")
-        print(f"Number of trades: {trade_analyzer.total.total}")
-        print(f"Winning trades: {trade_analyzer.won.total}")
-        print(f"Losing trades: {trade_analyzer.lost.total}")
-        print(f"Max drawdown: {drawdown:.2f}%")
+        # Prepare results string
+        results_string = f"""
+        Return: {(cerebro.broker.getvalue() / initial_cash - 1) * 100:.2f}%
+        Number of trades: {trade_analyzer.total.total}
+        Winning trades: {trade_analyzer.won.total}
+        Losing trades: {trade_analyzer.lost.total}
+        Max drawdown: {drawdown:.2f}%
+        """
         
-        # Plot the results
-        cerebro.plot()
+        # Create plot
+        fig = plt.figure(figsize=(12, 8))
+        cerebro.plot(fig=fig)
+        
+        return results_string, fig
+
     except Exception as e:
         # Handle any errors that occur during backtesting
-        print(f"An error occurred during backtesting: {e}")
-        sys.exit(1)
+        error_message = f"An error occurred during backtesting: {e}"
+        return error_message, None
+
+
 
 if __name__ == '__main__':
     try:

@@ -2,3 +2,4 @@ backtrader
 yfinance
 matplotlib
 tk
+streamlit
