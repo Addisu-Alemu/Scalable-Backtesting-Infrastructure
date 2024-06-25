@@ -4,3 +4,4 @@ matplotlib
 tk
 streamlit
 mlflow
+fastapi
