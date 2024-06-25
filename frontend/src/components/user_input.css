@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Titillium+Web:wght@300;400;700&display=swap");
+
+.user-input-container {
+  max-width: 440px;
+  padding: 0 20px;
+  margin: 170px auto;
+}
+
+.user-input-wrapper {
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+}
+
+.user-input-wrapper .user-input-title {
+  line-height: 80px;
+  background: #16a085;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.user-input-wrapper form {
+  padding: 30px 25px 25px 25px;
+}
+
+.user-input-wrapper form .user-input-row {
+  height: 45px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.user-input-wrapper form .user-input-row input,
+.user-input-wrapper form .user-input-row select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.user-input-wrapper form .user-input-row input:focus,
+.user-input-wrapper form .user-input-row select:focus {
+  border-color: #16a085;
+  box-shadow: inset 0px 0px 2px 2px rgba(26, 188, 156, 0.25);
+}
+
+.user-input-wrapper form .user-input-button input {
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  padding-left: 0px;
+  background: #16a085;
+  border: 1px solid #16a085;
+  cursor: pointer;
+}
+
+.user-input-wrapper form .user-input-button input:hover {
+  background: #12876f;
+}
+
+.user-input-wrapper form .user-input-row select option[value=""][disabled] {
+  display: none;
+}
+
+.user-input-wrapper form .user-input-row select:invalid {
+  color: gray;
+}

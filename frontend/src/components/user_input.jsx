@@ -1,66 +1,48 @@
 import React from 'react';
+import "./user_input.css";
 
 function User_input() {
   return (
-    <div className="container mx-auto p-4 pt-6">
-      <h1 className="text-3xl font-bold mb-4">Mela</h1>
-      <form>
-        <div className="flex flex-wrap justify-center mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Choose Stocks
-          </label>
-          <select className="block w-full mt-1 text-sm text-gray-900">
-            <option value="AAPL">Apple (AAPL)</option>
-            {/* Add more options here */}
-          </select>
+    <div className="user-input-container">
+      <div className="user-input-wrapper">
+        <div className="user-input-title">
+          <span>Mela</span>
         </div>
-        <div className="flex flex-wrap justify-center mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Choose Strategies
-          </label>
-          <select className="block w-full mt-1 text-sm text-gray-900">
-            <option value="SMA">Simple Moving Average (SMA)</option>
-            <option value="EMA">Exponential Moving Average (EMA)</option>
-            {/* Add more options here */}
-          </select>
-        </div>
-        <div className="flex flex-wrap justify-center mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Start Date
-          </label>
-          <input
-            type="date"
-            className="block w-full mt-1 text-sm text-gray-900"
-            placeholder="Start Date"
-          />
-        </div>
-        <div className="flex flex-wrap justify-center mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            End Date
-          </label>
-          <input
-            type="date"
-            className="block w-full mt-1 text-sm text-gray-900"
-            placeholder="End Date"
-          />
-        </div>
-        <div className="flex flex-wrap justify-center mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Initial Cash
-          </label>
-          <input
-            type="number"
-            className="block w-full mt-1 text-sm text-gray-900"
-            placeholder="Initial Cash"
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
-        >
-          Backtesting
-        </button>
-      </form>
+        <form>
+          <div className="user-input-row">
+            <select defaultValue="">
+              <option value="" disabled hidden>Choose Stocks</option>
+              <option value="AAPL">Apple (AAPL)</option>
+              <option value="GOOGL">Google (GOOGL)</option>
+              <option value="MSFT">Microsoft (MSFT)</option>
+              <option value="AMZN">Amazon (AMZN)</option>
+              {/* Add more stock options as needed */}
+            </select>
+          </div>
+          <div className="user-input-row">
+            <select defaultValue="">
+              <option value="" disabled hidden>Choose Strategies</option>
+              <option value="SMA">Simple Moving Average (SMA)</option>
+              <option value="EMA">Exponential Moving Average (EMA)</option>
+              <option value="MACD">Moving Average Convergence Divergence (MACD)</option>
+              <option value="RSI">Relative Strength Index (RSI)</option>
+              {/* Add more strategy options as needed */}
+            </select>
+          </div>
+          <div className="user-input-row">
+            <input type="date" placeholder="Start Date" />
+          </div>
+          <div className="user-input-row">
+            <input type="date" placeholder="End Date" />
+          </div>
+          <div className="user-input-row">
+            <input type="number" placeholder="Initial Cash" />
+          </div>
+          <div className="user-input-row user-input-button">
+            <input type="submit" value="Backtesting" />
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
