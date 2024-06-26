@@ -5,3 +5,5 @@ tk
 streamlit
 mlflow
 fastapi
+torch 
+torchvision
