@@ -55,83 +55,115 @@ function UserInput() {
   };
 
   return (
-    <div className="user-input-container">
-      <div className="user-input-wrapper">
-        <div className="user-input-title">
-          <span>Mela</span>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div className="user-input-row">
-            <select 
-              name="stock" 
-              value={formData.stock} 
-              onChange={handleChange}
-            >
-              <option value="" disabled hidden>Choose Stocks</option>
-              <option value="AAPL">Apple (AAPL)</option>
-              <option value="GOOGL">Google (GOOGL)</option>
-              <option value="MSFT">Microsoft (MSFT)</option>
-              <option value="AMZN">Amazon (AMZN)</option>
-              {/* Add more stock options as needed */}
-            </select>
-          </div>
-          <div className="user-input-row">
-            <select 
-              name="strategy" 
-              value={formData.strategy} 
-              onChange={handleChange}
-            >
-              <option value="" disabled hidden>Choose Strategies</option>
-              <option value="SMA">Simple Moving Average (SMA)</option>
-              <option value="EMA">Exponential Moving Average (EMA)</option>
-              <option value="MACD">Moving Average Convergence Divergence (MACD)</option>
-              <option value="RSI">Relative Strength Index (RSI)</option>
-              {/* Add more strategy options as needed */}
-            </select>
-          </div>
-          <div className="user-input-row">
-            <input 
-              type="date" 
-              name="startDate" 
-              placeholder="Start Date"
-              value={formData.startDate} 
-              onChange={handleChange} 
-            />
-          </div>
-          <div className="user-input-row">
-            <input 
-              type="date" 
-              name="endDate" 
-              placeholder="End Date"
-              value={formData.endDate} 
-              onChange={handleChange} 
-            />
-          </div>
-          <div className="user-input-row">
-            <input 
-              type="number" 
-              name="initialCash" 
-              placeholder="Initial Cash"
-              value={formData.initialCash} 
-              onChange={handleChange} 
-            />
-          </div>
-          <div className="user-input-row user-input-button">
-            <input type="submit" value="Backtesting" />
-          </div>
-        </form>
-<div className="user-input-row"> 
-  <label htmlFor="backtest-output">Backtest Result:</label>
-  <textarea id="backtest-output" readOnly 
-    value={`Return: ${backtestResult && backtestResult.return}%
-Num Trades: ${backtestResult && backtestResult.num_trades}
-Winning Trades: ${backtestResult && backtestResult.winning_trades}
-Losing Trades: ${backtestResult && backtestResult.losing_trades}
-Max Drawdown: ${backtestResult && backtestResult.max_drawdown}%`} 
-  />
+    <>
+    <div className='user-page-container'>
+  <div className="user-input-container">
+  <div className="user-input-wrapper">
+    <div className="user-input-title">
+      <span>Mela</span>
+    </div>
+    <form onSubmit={handleSubmit}>
+      <div className="user-input-row">
+        <select 
+          name="stock" 
+          value={formData.stock} 
+          onChange={handleChange}
+        >
+          <option value="" disabled hidden>Choose Stocks</option>
+          <option value="AAPL">Apple (AAPL)</option>
+          <option value="GOOGL">Google (GOOGL)</option>
+          <option value="MSFT">Microsoft (MSFT)</option>
+          <option value="AMZN">Amazon (AMZN)</option>
+          {/* Add more stock options as needed */}
+        </select>
+      </div>
+      <div className="user-input-row">
+        <select 
+          name="strategy" 
+          value={formData.strategy} 
+          onChange={handleChange}
+        >
+          <option value="" disabled hidden>Choose Strategies</option>
+          <option value="SMA">Simple Moving Average (SMA)</option>
+          <option value="EMA">Exponential Moving Average (EMA)</option>
+          <option value="MACD">Moving Average Convergence Divergence (MACD)</option>
+          <option value="RSI">Relative Strength Index (RSI)</option>
+          {/* Add more strategy options as needed */}
+        </select>
+      </div>
+      <div className="user-input-row">
+        <input 
+          type="date" 
+          name="startDate" 
+          placeholder="Start Date"
+          value={formData.startDate} 
+          onChange={handleChange} 
+        />
+      </div>
+      <div className="user-input-row">
+        <input 
+          type="date" 
+          name="endDate" 
+          placeholder="End Date"
+          value={formData.endDate} 
+          onChange={handleChange} 
+        />
+      </div>
+      <div className="user-input-row">
+        <input 
+          type="number" 
+          name="initialCash" 
+          placeholder="Initial Cash"
+          value={formData.initialCash} 
+          onChange={handleChange} 
+        />
+      </div>
+      <div className="user-input-row user-input-button">
+        <input type="submit" value="Backtesting" />
+      </div>
+    </form>
+  </div>
 </div>
+
+<div className="backtest-result-container">
+  <div className="backtest-metrics-title">
+    <span>Backtesting Metrics</span>
+  </div>
+  <div className="backtest-metrics">
+    <div className="metrics-row">
+      <label>Return:</label>
+      <div className="metrics-field">
+        <input type="text" value={backtestResult && backtestResult.return + "%"} readOnly />
       </div>
     </div>
+    <div className="metrics-row">
+      <label>Num Trades:</label>
+      <div className="metrics-field">
+        <input type="text" value={backtestResult && backtestResult.num_trades} readOnly />
+      </div>
+    </div>
+    <div className="metrics-row">
+      <label>Winning Trades:</label>
+      <div className="metrics-field">
+        <input type="text" value={backtestResult && backtestResult.winning_trades} readOnly />
+      </div>
+    </div>
+    <div className="metrics-row">
+      <label>Losing Trades:</label>
+      <div className="metrics-field">
+        <input type="text" value={backtestResult && backtestResult.losing_trades} readOnly />
+      </div>
+    </div>
+    <div className="metrics-row">
+      <label>Max Drawdown:</label>
+      <div className="metrics-field">
+        <input type="text" value={backtestResult && backtestResult.max_drawdown + "%"} readOnly />
+      </div>
+    </div>
+  </div>
+</div>  
+</div>
+</>
   );
 }
 
